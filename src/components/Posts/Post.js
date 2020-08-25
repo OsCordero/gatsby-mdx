@@ -1,13 +1,33 @@
-import React from 'react'
-import Image from 'gatsby-image'
-import { FaRegClock } from 'react-icons/fa'
-import { IoMdArrowRoundForward } from 'react-icons/io'
-import { Link } from 'gatsby'
-import styled from 'styled-components'
+import React from 'react';
+import Image from 'gatsby-image';
+import { FaRegClock } from 'react-icons/fa';
+import { IoMdArrowRoundForward } from 'react-icons/io';
+import { Link } from 'gatsby';
+import styled from 'styled-components';
 
-const Post = () => {
-  return <Wrapper>Post Component</Wrapper>
-}
+const Post = ({ frontmatter, excerpt }) => {
+  const { title, image, slug, date, category } = frontmatter;
+  return (
+    <Wrapper>
+      <Image fluid={image.childImageSharp.fluid} className="img" />
+      <div className="info">
+        <span className="category">{category}</span>
+        <h3>{title}</h3>
+        <div className="underline"></div>
+        <p>{excerpt}</p>
+        <Link to={`/posts/${slug}`} className="link">
+          Continue reading <IoMdArrowRoundForward />
+        </Link>
+        <footer>
+          <span className="date">
+            <FaRegClock className="icon" />
+            {date}
+          </span>
+        </footer>
+      </div>
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.article`
   margin-bottom: 3rem;
@@ -109,6 +129,6 @@ const Wrapper = styled.article`
       }
     }
   }
-`
+`;
 
-export default Post
+export default Post;

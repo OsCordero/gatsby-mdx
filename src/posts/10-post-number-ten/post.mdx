@@ -1,0 +1,75 @@
+---
+title: Gatbsy Tutorial
+slug: gatsby-tutorial
+image: ./images/gatsby-1.png
+date: 2020-05-27
+author: Jogn Smith
+category: Gatsby
+readTime: 7
+---
+
+import { Link } from 'gatsby';
+import { FiInfo } from 'react-icons/fi';
+import { Counter, LikeButton } from '../../components/Complete';
+
+# my First MDX file
+
+## this is an h2 and the one above is an h1
+
+### and this is an h3
+
+**Biodiesel kogi austin tattooed. Hella air plant whatever, banh mi messenger bag hoodie sustainable** Skateboard flannel photo booth truffaut franzen. Tote bag roof party banjo actually before they sold out swag shabby chic fanny pack chartreuse. Waistcoat taiyaki leggings migas green juice. Ramps cray _vice live-edge occupy thundercats letterpress shoreditch tofu trust fund organic disrupt narwhal artisan bushwick_
+
+<div className="code">
+
+```js
+const fisrtname = 'john';
+const lastname = 'smith';
+```
+
+</div>
+
+<div className="nice-text">
+
+### hey
+
+<FiInfo className="nice-text-icon" />
+
+Tote bag roof party banjo actually before they sold out swag shabby chic fanny pack chartreuse. Waistcoat taiyaki leggings migas green juice. Ramps cray _vice live-edge occupy thundercats letterpress shoreditch tofu trust fund organic disrupt narwhal artisan bushwick_
+
+</div>
+
+<h2>React Components</h2>
+<Counter />
+
+```jsx
+import React from 'react';
+import styled from 'styled-components';
+import { AiOutlineLike } from 'react-icons/ai';
+const LikeButton = () => {
+  const [value, setValue] = React.useState(0);
+  return (
+    <Wrapper>
+      <div>
+        <button onClick={() => setValue(value + 1)}>
+          <AiOutlineLike />
+        </button>
+        <p>
+          Liked the post?
+          <br />
+          Click thumbs up few times
+        </p>
+      </div>
+      <span>+{value}</span>
+    </Wrapper>
+  );
+};
+```
+
+<LikeButton />
+
+![nice image](./images/gatsby-1.png)
+
+<Link to="/posts" className="btn center-btn">
+  All posts
+</Link>

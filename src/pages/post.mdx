@@ -1,0 +1,163 @@
+import { Link } from 'gatsby';
+import { FiInfo } from 'react-icons/fi';
+import { Counter, LikeButton, Video, RegVideo } from '../components/Complete';
+
+<section className="mdx-page">
+
+# my First MDX file
+
+<div class="mdx-img">
+
+![nice image](../assets/gatsby-1.png)
+
+</div>
+
+## this is an h2 and the one above is an h1
+
+### and this is an h3
+
+**Biodiesel kogi austin tattooed. Hella air plant whatever, banh mi messenger bag hoodie sustainable** Skateboard flannel photo booth truffaut franzen. Tote bag roof party banjo actually before they sold out swag shabby chic fanny pack chartreuse. Waistcoat taiyaki leggings migas green juice. Ramps cray _vice live-edge occupy thundercats letterpress shoreditch tofu trust fund organic disrupt narwhal artisan bushwick_
+
+<div className="code">
+
+```js
+const fisrtname = 'john';
+const lastname = 'smith';
+```
+
+</div>
+
+<div className="nice-text">
+
+### hey
+
+<FiInfo className="nice-text-icon" />
+
+Tote bag roof party banjo actually before they sold out swag shabby chic fanny pack chartreuse. Waistcoat taiyaki leggings migas green juice. Ramps cray _vice live-edge occupy thundercats letterpress shoreditch tofu trust fund organic disrupt narwhal artisan bushwick_
+
+</div>
+
+<h2>React Components</h2>
+<Counter />
+
+```jsx
+import React from 'react';
+import styled from 'styled-components';
+import { AiOutlineLike } from 'react-icons/ai';
+const LikeButton = () => {
+  const [value, setValue] = React.useState(0);
+  return (
+    <Wrapper>
+      <div>
+        <button onClick={() => setValue(value + 1)}>
+          <AiOutlineLike />
+        </button>
+        <p>
+          Liked the post?
+          <br />
+          Click thumbs up few times
+        </p>
+      </div>
+      <span>+{value}</span>
+    </Wrapper>
+  );
+};
+```
+
+<LikeButton />
+
+<h2>Video Component</h2>
+<RegVideo />
+
+<Video />
+<h2 title="true">random h2</h2>
+<h2>second random h2</h2>
+
+<h4>Inline code</h4>
+
+`console.log('hello there')`
+
+<h4>Blockquote element</h4>
+
+<blockquote display="default">
+  Tote bag roof party banjo actually before they sold out swag shabby chic fanny
+  pack chartreuse. Waistcoat taiyaki leggings migas green juice. Ramps cray
+  \_vice live-edge occupy thundercats letterpress shoreditch tofu trust fund
+  organic disrupt narwhal artisan bushwick
+</blockquote>
+
+<blockquote display="info">
+  Tote bag roof party banjo actually before they sold out swag shabby chic fanny
+  pack chartreuse. Waistcoat taiyaki leggings migas green juice. Ramps cray
+  \_vice live-edge occupy thundercats letterpress shoreditch tofu trust fund
+  organic disrupt narwhal artisan bushwick
+</blockquote>
+
+<blockquote display="warning">
+  Tote bag roof party banjo actually before they sold out swag shabby chic fanny
+  pack chartreuse. Waistcoat taiyaki leggings migas green juice. Ramps cray_vice
+  live-edge occupy thundercats letterpress shoreditch tofu trust fund organic
+  disrupt narwhal artisan bushwick
+</blockquote>
+
+> Tote bag roof party banjo actually before they sold out swag shabby chic fanny pack chartreuse. Waistcoat taiyaki leggings migas green juice. Ramps cray \_vice live-edge occupy thundercats letterpress shoreditch tofu trust fund organic disrupt narwhal artisan bushwick
+
+#### Javascript
+
+```js
+// comments
+const name = 'john';
+const channel = 'coding addict';
+
+function featuredProducts(data) {
+  return data.filter(item => {
+    return item.featured === true;
+  });
+}
+featuredProducts();
+```
+
+#### JSX
+
+```jsx
+import React from 'react';
+
+const Counter = () => {
+  const [count, setCount] = React.useState(0);
+  return (
+    <section className="counter">
+      <h4>show some love to MDX</h4>
+      <h4>likes {count}</h4>
+      <button className="btn btn-danger" onClick={() => setCount(count + 1)}>
+        i like mdx
+      </button>
+    </section>
+  );
+};
+export default Counter;
+```
+
+#### HTML
+
+```html
+<h1>hello world</h1>
+<p class="random">random text</p>
+<section class="contact">
+  <div class="title">
+    <h1>contact us</h1>
+  </div>
+</section>
+```
+
+#### CSS
+
+```css
+max-width: 500px;
+border-radius: var(--radius);
+padding: 1rem 1.5rem;
+background: var(--clr-grey-10);
+text-align: center;
+```
+
+<Link to="/posts" className="btn center-btn">All posts</Link>
+</section>

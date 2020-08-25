@@ -1,16 +1,62 @@
-import React from 'react'
-import Layout from '../components/Layout'
-import Hero from '../components/Hero'
-import styled from 'styled-components'
-import Image from 'gatsby-image'
-import Banner from '../components/Banner'
-import { graphql } from 'gatsby'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
-// ...GatsbyImageSharpFluid
-const PostTemplate = () => {
-  return <h2>post template</h2>
-}
+import React from 'react';
+import Layout from '../components/Layout';
+import Hero from '../components/Hero';
+import styled from 'styled-components';
+import Image from 'gatsby-image';
+import Banner from '../components/Banner';
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+const PostTemplate = ({ data }) => {
+  const {
+    mdx: {
+      frontmatter: { image, title, category, date },
+      body,
+    },
+  } = data;
 
+  return (
+    <Layout>
+      <Hero />
+      <Wrapper>
+        <article>
+          <Image fluid={image.childImageSharp.fluid} />
+          <div className="post-info">
+            <span>{category}</span>
+            <h2>{title}</h2>
+            <p>{date}</p>
+            <div className="underline"></div>
+          </div>
+
+          <MDXRenderer>{body}</MDXRenderer>
+        </article>
+        <aside>
+          <Banner />
+        </aside>
+      </Wrapper>
+    </Layout>
+  );
+};
+export const query = graphql`
+  query getSinglePost($slug: String) {
+    mdx(frontmatter: { slug: { eq: $slug } }) {
+      body
+      frontmatter {
+        title
+        category
+        date(formatString: "MMM Do, YYYY")
+        readTime
+        slug
+        image {
+          childImageSharp {
+            fluid {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 const Wrapper = styled.section`
   width: 85vw;
   max-width: 1100px;
@@ -54,6 +100,6 @@ const Wrapper = styled.section`
       column-gap: 4rem;
     }
   }
-`
+`;
 
-export default PostTemplate
+export default PostTemplate;

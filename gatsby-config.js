@@ -1,6 +1,12 @@
 module.exports = {
+  siteMetadata: {
+    title: `Gatsby MDX Blog`,
+    description: `Gatsby project using mdx, styled-components and gatsby-source-instagram`,
+    titleTemplate: `%s | MDX BLog`,
+    url: `https://gatsby-mdx-oc.netlify.app/`,
+    image: `mainImg.png`,
+  },
   plugins: [
-    `gatsby-plugin-mdx`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     `gatsby-remark-images`,
@@ -20,12 +26,12 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-mdx`,
-    //   options: {
-    //     gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [{ resolve: 'gatsby-remark-images' }],
+      },
+    },
     {
       resolve: `gatsby-source-instagram`,
       options: {
@@ -47,4 +53,4 @@ module.exports = {
       },
     },
   ],
-}
+};

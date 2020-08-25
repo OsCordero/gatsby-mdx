@@ -564,7 +564,7 @@ Testing Post and Components
   padding: 2rem 1.5rem;
   color: var(--clr-grey-1);
   border-radius: var(--radius);
-  border-left: 3px solid var(--clr-primary-5);
+  border-left: 6px solid var(--clr-primary-5);
   color: var(--clr-black);
   position: relative;
 }

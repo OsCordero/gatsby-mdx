@@ -1,19 +1,58 @@
-import React from 'react'
-import styled from 'styled-components'
-import { graphql, useStaticQuery } from 'gatsby'
-import { Link } from 'gatsby'
-import Image from 'gatsby-image'
-import Title from './Title'
-// ...GatsbyImageSharpFluid
+import React from 'react';
+import styled from 'styled-components';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Link } from 'gatsby';
+import Image from 'gatsby-image';
+import Title from './Title';
 
+const query = graphql`
+  {
+    allMdx(sort: { fields: frontmatter___date, order: DESC }, limit: 5) {
+      nodes {
+        id
+        frontmatter {
+          slug
+          title
+          date(formatString: "MMM Do, YYYY")
+          image {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 const Recent = () => {
-  return <Wrapper>Banner Recent</Wrapper>
-}
+  const {
+    allMdx: { nodes: posts },
+  } = useStaticQuery(query);
+  return (
+    <Wrapper>
+      <Title title="recent" />
+      {posts.map(post => {
+        const { title, slug, date, image } = post.frontmatter;
+        return (
+          <Link to={`/posts/${slug}`} key={post.id} className="post">
+            <Image fluid={image.childImageSharp.fluid} className="img" />
+            <div>
+              <h5>{title}</h5>
+              <p>{date}</p>
+            </div>
+          </Link>
+        );
+      })}
+    </Wrapper>
+  );
+};
 
 const Wrapper = styled.div`
   .post {
     display: grid;
-    grid-template-columns: 75px 1fr;
+    grid-template-columns: 70px 1fr;
     column-gap: 1rem;
     margin-bottom: 1rem;
   }
@@ -21,7 +60,7 @@ const Wrapper = styled.div`
     border-radius: var(--radius);
   }
   h5 {
-    font-size: 0.7rem;
+    font-size: 1rem;
     margin-bottom: 0.25rem;
     letter-spacing: 0;
     line-height: 1.2;
@@ -37,6 +76,6 @@ const Wrapper = styled.div`
       color: var(--clr-primary-5);
     }
   }
-`
+`;
 
-export default Recent
+export default Recent;
